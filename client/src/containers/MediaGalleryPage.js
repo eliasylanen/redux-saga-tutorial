@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 
-import {
-  flickrImages,
-  shutterStockVideos,
-} from '../API/api';
+import { flickrImages, shutterStockVideos } from '../API/api';
 
 class MediaGalleryPage extends Component {
   async componentDidMount() {
