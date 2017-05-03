@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Header from '../common/Headers';
 
@@ -14,7 +14,7 @@ const App = props => (
 );
 
 App.propTypes = {
-  children: PropTypes.object.isRequired,
+  children: PropTypes.element.isRequired,
 };
 
 export default App;
