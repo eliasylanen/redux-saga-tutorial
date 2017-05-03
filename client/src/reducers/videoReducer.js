@@ -4,12 +4,12 @@ import types from '../constants/actionTypes';
 // Handles video actions
 const videos = (stateVideos = initialState.videos, action) => {
   switch (action.type) {
-    case types.FLICKR_IMAGES_SUCCESS:
+    case types.SHUTTER_VIDEOS_SUCCESS:
       return [...stateVideos, action.videos];
-    case types.SELECTED_IMAGE:
+    case types.SELECTED_VIDEO:
       return { ...stateVideos, selectedVideo: action.video };
     default:
-      return state;
+      return stateVideos;
   }
 };
 

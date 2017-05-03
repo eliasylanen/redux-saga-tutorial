@@ -1,6 +1,6 @@
 import { put, call } from 'redux-saga/effects';
 
-import { flickrImages, shitterStockVideos } from '../API/api';
+import { flickrImages, shutterStockVideos } from '../API/api';
 import types from '../constants/actionTypes';
 
 /**
@@ -19,6 +19,6 @@ export default function* searchMediaSaga({ payload }) {
       put({ type: types.SELECTED_IMAGE, image: images[0] }),
     ];
   } catch (error) {
-    yield put({ type: SEARCH_MEDIA_ERROR, error });
+    yield put({ type: types.SEARCH_MEDIA_ERROR, error });
   }
 }

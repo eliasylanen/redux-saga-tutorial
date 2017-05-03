@@ -9,7 +9,7 @@ const images = (stateImages = initialState.images, action) => {
     case types.SELECTED_IMAGE:
       return { ...stateImages, selectedImage: action.image };
     default:
-      return state;
+      return stateImages;
   }
 };
 
