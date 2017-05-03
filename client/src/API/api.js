@@ -21,14 +21,18 @@ export const shutterStockVideos = async searchQuery => {
   const SHUTTERSTOCK_API_ENDPOINT = `https://api.shutterstock.com/v2/videos/search?
   query=${searchQuery}&page=1&per_page=10`;
 
-  const data = await fetch(SHUTTERSTOCK_API_ENDPOINT, authParameters);
-  const json = await data.json();
+  try {
+    const data = await fetch(SHUTTERSTOCK_API_ENDPOINT, authParameters);
+    const json = await data.json();
 
-  return json.data.map(({ id, assets, descritpion }) => ({
-    id,
-    mediaUrl: assets.preview_mp4.url,
-    descritpion,
-  }));
+    return json.data.map(({ id, assets, descritpion }) => ({
+      id,
+      mediaUrl: assets.preview_mp4.url,
+      descritpion,
+    }));
+  } catch (error) {
+    throw error;
+  }
 };
 
 /**
@@ -39,12 +43,16 @@ export const shutterStockVideos = async searchQuery => {
 export const flickrImages = async searchQuery => {
   const FLICKR_API_ENDPOINT = `https://api.flickr.com/services/rest/?method=flickr.photos.search&text=${searchQuery}&api_key=${FLICKR_API_KEY}&format=json&nojsoncallback=1&per_page=10`;
 
-  const data = await fetch(FLICKR_API_ENDPOINT);
-  const json = await data.json();
+  try {
+    const data = await fetch(FLICKR_API_ENDPOINT);
+    const json = await data.json();
 
-  return json.photos.photo.map(({ farm, server, id, secret, title }) => ({
-    id,
-    title,
-    mediaUrl: `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg`,
-  }));
+    return json.photos.photo.map(({ farm, server, id, secret, title }) => ({
+      id,
+      title,
+      mediaUrl: `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg`,
+    }));
+  } catch (error) {
+    throw error;
+  }
 };
