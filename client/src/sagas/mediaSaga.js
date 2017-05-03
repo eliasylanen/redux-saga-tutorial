@@ -8,7 +8,7 @@ import types from '../constants/actionTypes';
  * instructing the redux-saga middleware on the next line of action,
  * for success or failure operation
  */
-export function* searchMediaSaga({ payload }) {
+export default function* searchMediaSaga({ payload }) {
   try {
     const videos = yield call(shutterStockVideos, payload);
     const images = yield call(flickrImages, payload);
